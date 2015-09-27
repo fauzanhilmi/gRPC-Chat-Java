@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package grpc.chat;
+
+option java_package = "grpc.chat";
+
+service Chatter {
+	rpc createNickname(mName) returns (mString) {}
+	rpc joinChannel(mNameChannel) returns (mBoolean) {}
+	rpc leaveChannel(mNameChannel) returns (mBoolean) {}
+	rpc sendMessage(mNameChannelMsg) returns (mBoolean) {}
+	rpc getMessage(mName) returns (mString) {}
+}
+
+message mString {
+	string value = 1;
+}
+
+message mBoolean {
+	bool value = 1;
+}
+
+message mName {
+	string name = 1;
+}
+
+message mNameChannel {
+	string name = 1;
+	string channel = 2;
+}
+
+message mNameChannelMsg {
+	string name = 1;
+	string channel = 2;
+	string msg = 3;
+}
+

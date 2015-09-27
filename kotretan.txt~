@@ -1,0 +1,11 @@
+Kelas Handler
+ public static List<String> defaultUsernames;
+ public static List<String> activeUsers;
+ public static List<Channel> activeChannels;
+ public static List<User> broadcastChannels;
+ public User currentUser;
+
+ public String createNickname(String name)
+ public boolean joinChannel(String name, String channel)
+ public boolean leaveChannel(String name, String channel)
+ public boolean sendMessage(String name, String channel, String message)
