@@ -1,9 +1,9 @@
 #gRPC-Chat-Java
-A simple chat application using gRPC with Java
+A simple chat application using gRPC with Java  
 Aplikasi chat sederhana yang dibangun memakai gRPC dengan Java
 
 ###Authors
-Fauzan Hilmi Ramadhian - 13512003 & 
+Fauzan Hilmi Ramadhian - 13512003  
 Tegar Aji Pangestu - 13512061
 
 ###Requirements
