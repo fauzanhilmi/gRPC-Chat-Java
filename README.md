@@ -16,13 +16,9 @@ Program telah dibuat sedemikian hingga tidak perlu melakukan instalasi
 
  1. Pada terminal, cd ke ```dist/```
  2.  Jalankan server dengan menjalankan file ```Chat.jar``` dengan :
-```java
-java -jar Chat.jar
-```
+```java java -jar Chat.jar ```
  3.  Jalankan beberapa client dengan menjalankan file ```Chat.jar``` dengan :
-```java
-java -jar Chat.jar
-``` 
+```java java -jar Chat.jar ``` 
  4. Ketik ```/NICK <username>``` untuk mendaftarkan username. Jika username kosong maka akan dibangkitkan secara otomatis
  5. Ketik ```/JOIN <channelname>``` untuk mendaftarkan diri ke sebuah channel. Jika nama channel kosong maka akan terdaftar otomatis ke  ```channelname```
  6. Kirimkan chat dengan mengetik ```@<channelname> <chatmessage>``` untuk mengetik pesan
