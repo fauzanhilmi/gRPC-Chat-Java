@@ -241,6 +241,8 @@ public class ChatterServer {
                 }
             }
             GRPCChat.mString resp = GRPCChat.mString.newBuilder().setValue(msgBuilder.toString()).build();
+            responseObserver.onValue(resp);
+            responseObserver.onCompleted();
         }
         
         //Utility functions

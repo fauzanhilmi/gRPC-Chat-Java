@@ -65,7 +65,7 @@ public class ChatterClient {
     }
 
     //main
-    public static void main (String[] args) {
+    public static void main (String[] args) throws InterruptedException {
         final ChatterClient client = new ChatterClient("localhost",50051);
         final User u = new User();
         Scanner sc = new Scanner(System.in);
@@ -82,13 +82,11 @@ public class ChatterClient {
                         System.out.print(messString);                                                     
                     }
                 }
-                //TES
-                System.out.println("n");
             }
         };
         timer.schedule(doAsynchronousTask, 0, 1000); //execute in every 100 ms
         
-        while (!command.equals("/EXIT")) {
+        while (!command.equals("/EXIT")) { 
             if (command.length() >= 5 && command.substring(0, 5).equals("/NICK")) {
                 if (command.length() == 5) { //default username
                     u.setName(client.createNickname(""));
@@ -157,5 +155,6 @@ public class ChatterClient {
         }
         timer.cancel();
         timer.purge();
+        client.shutdown();
     }
 }
