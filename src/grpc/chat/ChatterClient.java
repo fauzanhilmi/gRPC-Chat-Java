@@ -91,7 +91,7 @@ public class ChatterClient {
                 if (command.length() == 5) { //default username
                     u.setName(client.createNickname(""));
                     System.out.println("Successfully created nickname " + u.getName());
-                } else if (command.charAt(5) == ' ' && command.length() >= 7) {
+                } else if (command.length() >= 7 && command.charAt(5) == ' ') {
                     String name = client.createNickname(command.substring(6, command.length()));
                     if (!name.equals("")) {
                         u.setName(name);
@@ -107,7 +107,7 @@ public class ChatterClient {
                         u.addChannel("channelname");
                         System.out.println("Successfully joined channelname");
                     }
-                } else if (command.charAt(5) == ' ' && command.length() >= 7) {
+                } else if (command.length() >= 7 && command.charAt(5) == ' ') {
                     if (client.joinChannel(u.getName(), command.substring(6, command.length()))) {
                         u.addChannel(command.substring(6, command.length()));
                         System.out.println("Successfully joined " + command.substring(6, command.length()));
@@ -121,8 +121,7 @@ public class ChatterClient {
                     System.out.println("Wrong format");
                 }
             } else if (command.length() >= 6 && command.substring(0, 6).equals("/LEAVE") && !u.isEmpty()) {
-                if (command.charAt(6) == ' ' && command.length() >= 8) {
-                    System.out.println(command.substring(7, command.length()));
+                if (command.length() >= 8 && command.charAt(6) == ' ') {
                     if (client.leaveChannel(u.getName(), command.substring(7, command.length()))) {
                         u.removeChannel(command.substring(7, command.length()));
                         System.out.println("Successfully left " + command.substring(7, command.length()));

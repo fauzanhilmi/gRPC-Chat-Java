@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/User.java</file>
             <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/ChatterGrpc.java</file>
-            <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/Channel.java</file>
+            <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/ChatterClient.java</file>
             <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/ChatterServer.java</file>
-            <file>file:/home/fauzanhilmi/Documents/PAT/Tugas3/gRPC-Chat/src/grpc/chat/GRPCChat.java</file>
         </group>
     </open-files>
 </project-private>

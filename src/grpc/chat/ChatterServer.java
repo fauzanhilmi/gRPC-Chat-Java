@@ -191,13 +191,13 @@ public class ChatterServer {
             boolean foundChannel = false;
             System.out.println("channel msg "+channel);
             if (!channel.equals("broadcast")) {
-                while (i < activeChannels.size()) {
+                while (i < activeChannels.size() && !foundChannel) {
                     if (activeChannels.get(i).getName().equals(channel)) {
                         foundChannel = true;
                         for (int j = 0; j < activeChannels.get(i).activeUser.size(); j++) {
-                            if (!activeChannels.get(i).activeUser.get(j).getName().equals(name)) {
+//                            if (!activeChannels.get(i).activeUser.get(j).getName().equals(name)) {
                                 activeChannels.get(i).activeUser.get(j).addMessage(mesString);
-                            }
+//                            }
                         }
                     }
                     i++;
@@ -207,10 +207,10 @@ public class ChatterServer {
                 responseObserver.onCompleted();
             } else {
                 for (int j = 0; j < broadcastChannels.size(); j++) {
-                    if (!broadcastChannels.get(j).getName().equals(name)) {
+//                    if (!broadcastChannels.get(j).getName().equals(name)) {
                         System.out.println("broadcast msg "+mesString);
                         broadcastChannels.get(j).addMessage(mesString);
-                    }
+//                    }
                 }
                 GRPCChat.mBoolean resp = GRPCChat.mBoolean.newBuilder().setValue(true).build();
                 responseObserver.onValue(resp);
