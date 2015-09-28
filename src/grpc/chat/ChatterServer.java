@@ -131,6 +131,7 @@ public class ChatterServer {
                 if (activeChannels.get(i).getName().compareToIgnoreCase(channel) == 0) {
                     System.out.println(name + " successfully joined " + channel);
                     activeChannels.get(i).addActiveUser(name);
+                    currentUser.addChannel(channel);
                     GRPCChat.mBoolean resp = GRPCChat.mBoolean.newBuilder().setValue(true).build();
                     responseObserver.onValue(resp);
                     responseObserver.onCompleted();
@@ -163,6 +164,10 @@ public class ChatterServer {
             int i = 0;
             while (i < activeChannels.size()) {
                 if (activeChannels.get(i).getName().compareToIgnoreCase(channel) == 0) {
+                    System.out.println("> "+activeChannels.get(i).getName());
+                    for(int j=0; j<currentUser.getMyChannels().size(); j++) {
+                        System.out.println(currentUser.getMyChannels().get(j));
+                    }
                     activeChannels.get(i).removeActiveUser(name);
                     currentUser.removeChannel(channel);
                     System.out.println(name + " successfully left " + channel);
@@ -212,6 +217,30 @@ public class ChatterServer {
                         broadcastChannels.get(j).addMessage(mesString);
 //                    }
                 }
+//                for(int m=0; m<broadcastChannels.size(); m++) {
+//                    if(broadcastChannels.get(m).getName().equals(name)) { System.out.println(broadcastChannels.get(m).getMyChannels().size());
+////                        for(int j=0; j<currentUser.getMyChannels().size(); j++) {
+//                        for(int j=0; j<broadcastChannels.get(m).getMyChannels().size(); j++) {
+//                            System.out.println(">");
+//                            System.out.println(currentUser.getMyChannels().size()+" berbanding "+activeChannels.size());
+//                            System.out.println(currentUser.getMyChannels().get(j));
+//                            for(int k=0; k<activeChannels.size(); k++) {
+////                                if((currentUser.getMyChannels().get(j)).equals(activeChannels.get(k).getName())) {
+//                                  if((broadcastChannels.get(m).getMyChannels().get(j)).equals(activeChannels.get(k).getName())) {
+//        //                            System.out.println(">");
+//        //                            System.out.println(activeChannels.get(k).activeUser.size());
+//        //                            System.out.println(currentUser.getMyChannels().get(j));
+//        //                            System.out.println(j+" "+k+" "+activeChannels.get(k).getName());
+//                                    for(int l=0; l<activeChannels.get(k).activeUser.size(); l++) {
+//                                        mesString = new String("[" + activeChannels.get(k).getName() + "] " + "(" + name + ") " + message);
+//                                        activeChannels.get(k).activeUser.get(l).addMessage(mesString);
+//                                    }
+//                                }
+//                            }
+//                        }
+////                        break;
+//                    }
+//                }
                 GRPCChat.mBoolean resp = GRPCChat.mBoolean.newBuilder().setValue(true).build();
                 responseObserver.onValue(resp);
                 responseObserver.onCompleted();

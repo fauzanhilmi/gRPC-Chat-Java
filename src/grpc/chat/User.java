@@ -68,7 +68,7 @@ public class User {
     }
     public void addMessage(String message)
     {
-        System.out.println("User = "+message);
+//        System.out.println("User = "+message);
         //channelname - nickname - content
         messQueue.add(message);
     }
