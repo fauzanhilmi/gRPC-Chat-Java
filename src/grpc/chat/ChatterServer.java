@@ -28,9 +28,7 @@ public class ChatterServer {
     private ServerImpl server;
     
     private void start() throws Exception {
-        server = NettyServerBuilder.forPort(port)
-//                .addService(ChatterGrpc.bindService()) JANGAN LUPA!!
-                .build().start();
+        server = NettyServerBuilder.forPort(port).addService(ChatterGrpc.bindService(new ChatterImpl())).build().start();
         logger.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -56,6 +54,15 @@ public class ChatterServer {
         if (server != null) {
             server.awaitTermination();
         }
+    }
+    
+    /**
+    * Main launches the server from the command line.
+    */
+    public static void main(String[] args) throws Exception {
+        final ChatterServer server = new ChatterServer();
+        server.start();
+        server.blockUntilShutdown();
     }
     
     private class ChatterImpl implements ChatterGrpc.Chatter {
@@ -109,7 +116,7 @@ public class ChatterServer {
         }
 
         @Override
-            public void joinChannel(GRPCChat.mNameChannel request, StreamObserver<GRPCChat.mBoolean> responseObserver) {
+        public void joinChannel(GRPCChat.mNameChannel request, StreamObserver<GRPCChat.mBoolean> responseObserver) {
             if (request.getName().isEmpty() || request.getChannel().isEmpty()) {
                 GRPCChat.mBoolean resp = GRPCChat.mBoolean.newBuilder().setValue(false).build();
                 responseObserver.onValue(resp);
